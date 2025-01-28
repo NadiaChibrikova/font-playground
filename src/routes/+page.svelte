@@ -1,5 +1,6 @@
 <script>
 import FontUnit from '../components/fontUnit.svelte';
+import DraggableModal from '../components/draggableModal.svelte';
 import fontNames from '../fontNames.json';
     let { data } = $props();
     const elements = data.elements
@@ -31,6 +32,12 @@ import fontNames from '../fontNames.json';
 {#each elements as el}
 <FontUnit tag={el.tag} onTagFocused={onTagFocused} {...styles[el.tag]} text={el.text} selected={el.tag==selectedTag} />
 {/each}
+
+{#snippet header()}
+	<div>Font Parameters</div>
+{/snippet}
+<DraggableModal {header} >
+<section class="settings">
 <select name="fonts" size="8" bind:value={fontName}>
 {#each fontNames as fn}
 <option value={fn}>{fn}</option>
@@ -42,4 +49,10 @@ import fontNames from '../fontNames.json';
     }}>load font</button>
  <div>Font-size</div>
      <input bind:value={styles[selectedTag].fontSize} type="number" />
-
+ </section>
+</DraggableModal>
+<style>
+    .settings{
+        position:relative;
+    }
+</style>

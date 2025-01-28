@@ -1,17 +1,16 @@
 <script>
 	let {onTagFocused, color, fontSize, tag, fontName, text, selected } = $props();
 </script>
-<textarea
- value={text}
+<div
+ contenteditable="true"
  style:color={color}
  style:--fs={fontSize + "px"}
  style:--fn={fontName}
  style:--lb={selected ? "3px" : 0 }
  onfocus={()=>onTagFocused(tag)}
-/>
+>{text}</div>
 <style>
-textarea{
-    display: block;
+div{
     border: none;
     outline: none;
     font-size: var(--fs);
