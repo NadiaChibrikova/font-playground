@@ -17,5 +17,6 @@ div{
     font-family: var(--fn);
     width:100%;
     border-left: var(--lb) solid #777;
+    padding-left:8px;
 }
 </style>
